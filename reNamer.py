@@ -11,34 +11,36 @@ pad = cmds.textFieldGrp(label = 'Padding', w=100)
 	
 cmds.button(l='getName', c=lambda x:getName(printName()))
 cmds.button(l='getNum', c=lambda x:getNum(printNum()))
-cmds.button(l='getPad', c=lambda x:padding(int(printPad())))	
-cmds.button(l='sumUp')
+cmds.button(l='getPad', c=lambda x:padding(int(printPad())))
+cmds.button(l='sumUp', c=lambda x:renamer(getName(printName()),padding(int(printPad())),getNum(printNum())))
 cmds.showWindow(win)
 
 # get name data for rename
 def printName():
 			
-	temp1 = cmds.textFieldGrp(name, tx= True, q= True)	
-	return temp1
+	getNm = cmds.textFieldGrp(name, tx= True, q= True)	
+	return getNm
 	
 def getName(name):
 	print name
+	return name
 		
 
 # get num data for numbering
 def printNum():
 
-	temp2 = cmds.textFieldGrp(num, tx= True, q= True)
-	return temp2
+	number = cmds.textFieldGrp(num, tx= True, q= True)
+	return number
 
 def getNum(num):
 	print str(num)
+	return str(num)
 
 # get num data for padding	
 def printPad():
 
-	temp3 = cmds.textFieldGrp(pad, tx= True, q= True)
-	return int(temp3)
+	padNum = cmds.textFieldGrp(pad, tx= True, q= True)
+	return padNum
 
 def padding(num):
 	time = range(num)
@@ -50,10 +52,10 @@ def padding(num):
 		padding += '0'
 			
 	print padding
+	return padding
 
-#
-'''
-sel = cmds.ls(sl=True)
-cmds.rename(sel[0],newName+pad+newNum)
-'''
-
+# sum up each data, then change name to selected object
+def renamer(name,pad,num):
+	
+	sel = cmds.ls(sl=True)
+	cmds.rename(sel[0],name+pad+num)
