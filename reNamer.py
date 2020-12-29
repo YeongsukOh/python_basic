@@ -9,12 +9,13 @@ name = cmds.textFieldGrp(label = 'Rename', w=100)
 num = cmds.textFieldGrp(label = 'Start#', w=100)
 pad = cmds.textFieldGrp(label = 'Padding', w=100)
 	
-cmds.button(l='Rename And Number', c=lambda x:getName(printName()))
-cmds.button(l='Rename And Number', c=lambda x:getNum(printNum()))
-cmds.button(l='Rename And Number', c=lambda x:padding(int(printPad())))	
+cmds.button(l='getName', c=lambda x:getName(printName()))
+cmds.button(l='getNum', c=lambda x:getNum(printNum()))
+cmds.button(l='getPad', c=lambda x:padding(int(printPad())))	
+cmds.button(l='sumUp')
 cmds.showWindow(win)
 
-#
+# get name data for rename
 def printName():
 			
 	temp1 = cmds.textFieldGrp(name, tx= True, q= True)	
@@ -24,7 +25,7 @@ def getName(name):
 	print name
 		
 
-#
+# get num data for numbering
 def printNum():
 
 	temp2 = cmds.textFieldGrp(num, tx= True, q= True)
@@ -33,7 +34,7 @@ def printNum():
 def getNum(num):
 	print str(num)
 
-#	
+# get num data for padding	
 def printPad():
 
 	temp3 = cmds.textFieldGrp(pad, tx= True, q= True)
@@ -55,3 +56,4 @@ def padding(num):
 sel = cmds.ls(sl=True)
 cmds.rename(sel[0],newName+pad+newNum)
 '''
+
